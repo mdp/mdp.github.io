@@ -1,0 +1,81 @@
+---
+layout: default
+title: Mark Percival
+---
+
+<div id="header" class='sixteen columns alpha'>
+  
+  <div class="fourteen columns alpha"> <div class="avatar"><img src="/assets/img/avatar_75.png"/></div> <h1><a href="/">MARK PERCIVAL</a></h1></div>
+</div>
+
+<div id='about' class='one-third column alpha'>
+  <h2 class='heading'>about</h2>
+  <p> Formerly mobile engineering at Twitter, then Director of Engineering at Snip.it, which was acquired, and now at Yahoo!.</p>
+  <p>
+  In my free time I like to travel, eat fearlessly, avoid traffic, work on open source projects, and violate terms of service agreements.</p>
+</div>
+
+<div id='project' class='one-third column'>
+  <h2 class='heading'>projects</h2>
+  <ul>
+    <li><a href="http://github.com/mdp/middlefiddle">MiddleFiddle</a> - A HTTP/HTTPS proxy built on Node.js</li>
+    <li><a href="http://github.com/mdp/rturk">RTurk</a> - The Mechanical Turk gem for Ruby</li>
+    <li><a href="http://github.com/mdp/rotp">ROTP</a> - A Ruby gem for One Time Password, RFC 4226 compatible </li>
+    <li><a href="http://mdp.github.com/gibberish-aes">Gibberish</a> - An OpenSSL compatible AES cryptography library written in javascript</li>
+    <li><a href="http://github.com/mdp">Other Github Projects</a> - Check here for more up to date work</li>
+  </ul>
+</div>
+
+<div id='contact' class='one-third column omega'>
+  <h2 class='heading'>Contact</h2>
+  <ul>
+    <li>Emailing &raquo; <a href="mailto:m@mdp.im">m@mdp.im</a></li>
+    <li>Coding &raquo; <a href="https://github.com/mdp">Github/mdp</a></li>
+    <li>Tumblring &raquo; <a href="http://markpercival.tumblr.com">markpercival.tumblr.com</a></li>
+    <li>Twittering &raquo; <a href='http://twitter.com/mdp'>@mdp</a></li>
+    <li>Networking &raquo; <a href='http://linkedin.com/in/markpercival'>LinkedIn Profile</a></li>
+    <li>Listening &raquo; <a href='http://rdio.com/people/mdp'>Rdio</a></li>
+    <!-- <li>Listening &raquo; <a href='http://hypem.com/markpercival'>Hype Machine</a></li>-->
+  </ul>
+</div>
+
+
+<div class='two-thirds column alpha'>
+  <h2 class='heading'>Long Winded</h2>
+  <ul id='posts' class="">
+    {% for post in site.categories.featured %}
+      <!--<li><a href="{{ post.url }}">{{ post.title }}</a> &raquo; <span class='right date'>{{ post.date | date_to_string }}</span></li>-->
+      {% if post.redirect %}
+      <li><span class='right date mono'>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.redirect }}">{{ post.title }}</a></li>
+      {% else %}
+      <li><span class='right date mono'>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+
+    {% endfor %}
+  </ul>
+</div>
+<!--This d3 graphic represents an attempt to crack(ie. find the p or q primes) the following key:-->
+<!--VeriSign Class 3 Public Primary Certification Authority - G5-->
+<!--Serial 18 DA D1 9E 26 7D E8 BB 4A 21 58 CD CC 6B 3B 4A-->
+<!--Good luck :)-->
+<div class='one-third column omega'><h2 class="heading">Prime Attempts</h2><span id="primeCracker"></span></div>
+
+<script src="/assets/js/optimus_prime/src/biginteger.js"></script>
+<script src="/assets/js/optimus_prime/src/optimus_prime.js"></script>
+<script src="/assets/libs/d3.min.js"></script>
+<script src="/assets/js/heatmap.js"></script>
+<script>
+  $(document).ready(function(){
+    verisign_mod = BigInteger.parse("00af240808297a359e600caae74b3b4edc7cbc3c451cbb2be0fe2902f95708a364851527f5f1adc831895d22e82aaaa642b38ff8b955b7b1b74bb3fe8f7e0757ecef43db66621561cf600da4d8def8e0c362083d5413eb49ca59548526e52b8f1b9febf5a191c23349d843636a524bd28fe870514dd189697bc770f6b3dc1274db7b5d4b56d396bf1577a1b0f4a225f2af1c926718e5f40604ef90b9e400e4dd3ab519ff02baf43ceee08beb378becf4d7acf2f6f03dafdd759133191d1c40cb7424192193d914feac2a52c78fd50449e48d6347883c6983cbfe47bd2b7e4fc595ae0e9dd4d143c06773e314087ee53f9f73b8330acf5d3f3487968aee53e82515", 16);
+    var optimusPrime = new OptimusPrime(verisign_mod);
+    var heatMap = new HeatMap("#primeCracker");
+    var delay = 100;
+    optimusPrime.start(delay, function(p, success){
+      heatMap.update(p.toString(16));
+      if (success){
+        alert("You just cracked a 2048 bit Verisign RSA key! You'll want to write this down: " + success.toString(16));
+      }
+    });
+  });
+</script>
+

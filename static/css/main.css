@@ -1,0 +1,26 @@
+a {
+  color: #333;
+}
+
+ul {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.right { float:right; }
+
+.left { float:left; }
+
+.centerMid {
+  width: 700px;
+}
+
+#content .date {
+  color: #AAA;
+}
+
+#content ul li {
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
