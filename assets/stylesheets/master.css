@@ -8,16 +8,18 @@ body {
 
 a, a:visited {
   text-decoration:none;
+  border-bottom: 1px #a9a9a9 dotted;
   color: #222;
 }
 
 h1 a, h1 a:visited, h2 a, h2 a:visited, h3 a, h3 a:visited, h4 a, h4 a:visited  {
   color: #2ba6cb;
   font-family: "Oswald", sans-serif;
+  border: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  border-bottom: 1px #2ba6cb dotted;
   color: #2ba6cb;
 }
 

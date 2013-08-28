@@ -39,20 +39,30 @@ title: Mark Percival
   </ul>
 </div>
 
-
 <div class='two-thirds column alpha'>
-  <h2 class='heading'>Long Winded</h2>
-  <ul id='posts' class="">
-    {% for post in site.categories.featured %}
-      <!--<li><a href="{{ post.url }}">{{ post.title }}</a> &raquo; <span class='right date'>{{ post.date | date_to_string }}</span></li>-->
-      {% if post.redirect %}
-      <li><span class='right date mono'>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.redirect }}">{{ post.title }}</a></li>
-      {% else %}
-      <li><span class='right date mono'>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endif %}
+  <div class='two-thirds column alpha'>
+    <h2 class='heading'>Things I give a shit about</h2>
+    <ul>
+      <li><a href='https://eff.org'>Electronic Frontier Foundation</a> - Proud supporter and donor. You should be too!</li>
+      <li><a href="https://www.torproject.org/">Tor</a> - I run <a href="http://globe.rndm.de/#/search/query=mdp">3 Tor relays</a> and contribute to the <a href="http://tor.noisebridge.net/">Noisebridge exit node</a></li>
+      <li><a href="http://mailpile.is">MailPile</a> - Backer and hopeful future user</li>
+    </ul>
+  </div>
 
-    {% endfor %}
-  </ul>
+  <div class='two-thirds column alpha'>
+    <h2 class='heading'>Long Winded</h2>
+    <ul id='posts' class="">
+      {% for post in site.categories.featured %}
+        <!--<li><a href="{{ post.url }}">{{ post.title }}</a> &raquo; <span class='right date'>{{ post.date | date_to_string }}</span></li>-->
+        {% if post.redirect %}
+        <li><span class='right date mono'>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.redirect }}">{{ post.title }}</a></li>
+        {% else %}
+        <li><span class='right date mono'>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 <!--This d3 graphic represents an attempt to crack(ie. find the p or q primes) the following key:-->
 <!--VeriSign Class 3 Public Primary Certification Authority - G5-->
