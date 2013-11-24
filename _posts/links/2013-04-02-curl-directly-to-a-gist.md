@@ -15,7 +15,7 @@ One option, I can install the command line gist tool.
 
 But wouldn’t it be nice if you could just curl the content of the file directly to Gist
 
-```shell
+```sh
   $ curl --data-binary @README.md http://cist.herokuapp.com/read.md
   #> https://gist.github.com/32d1b11087f326a9653f
 ```
