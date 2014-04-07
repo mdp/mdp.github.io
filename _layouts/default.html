@@ -41,6 +41,13 @@
     <meta content="/assets/img/avatar.png" property="og:image">
     {% endif %}
 
+    <script>
+      // Now HTTPS only
+      var host = "mdp.github.io";
+      if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location = window.location.toString().replace(/^http:/, "https:");
+    </script>
+
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="/assets/img/icon.png" />
     <link rel="apple-touch-icon" href="/assets/img/icon_128.png" />
