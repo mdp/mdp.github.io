@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <link rel="stylesheet" href="/notwork/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/notwork/css/bootstrap-theme.min.css">
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+</head>
+<style>
+*{margin:0;padding:0;}
+#background{
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  z-index:-1;
+}
+.content-wrapper {
+  margin: auto;
+  width: 600px;
+  background-color:rgba(255,255,255,0.8);
+  z-index:100;
+  padding: 1em;
+}
+
+.content {
+  margin: auto;
+}
+
+.credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: #CCC;
+  font-style: italic;
+}
+</style>
+
+  <body>
+
+    <div id="background"></div>
+    <div class="content-wrapper">
+      <div class="content">
+        {{ content }}
+      </div>
+    </div>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/notwork/js/enesser-3d.js"></script>
+  <div class="credit">Animations by Eric Nesser</div>
+  </body>
+
+</html>
