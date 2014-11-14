@@ -1,0 +1,76 @@
+==================================================================
+https://keybase.io/mdp
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mdp.github.io
+  * I am mdp (https://keybase.io/mdp) on keybase.
+  * I have a public key with fingerprint E1E8 7928 C499 5D0A E31D  1514 D4BF DAC7 74ED EA2A
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "client": {
+            "name": "keybase.io node.js client",
+            "version": "0.7.2"
+        },
+        "key": {
+            "fingerprint": "e1e87928c4995d0ae31d1514d4bfdac774edea2a",
+            "host": "keybase.io",
+            "key_id": "D4BFDAC774EDEA2A",
+            "uid": "bb49edbe49e7d3f184ae2b9dcfd4e600",
+            "username": "mdp"
+        },
+        "merkle_root": {
+            "ctime": 1415942915,
+            "hash": "5c41f3b065080ef7c0d436a18b60080dcd11d61ae078045131fd2668c2ef557f13542658511e7b2dbd8320b7244743cc605602a8461b6b31ede9efde19dabbd1",
+            "seqno": 95483
+        },
+        "service": {
+            "hostname": "mdp.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1415943004,
+    "expire_in": 157680000,
+    "prev": "e491f59310d23d686cb25c5a76ee3a17bcb55f4fd677e7e062f6b2cd157e5b47",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Comment: GPGTools - http://gpgtools.org
+
+owFVUm1oHEUYvjuNtWqw+qNiKxjWUqhJLzOz87GbSknSxK9gQ6WxWlOOnZ13c2su
+t5fdzTdXJMUTFYuxoEILSVWkRdEUJa0gBg+CQhUUo4WgbaBSWiHaEihYpHU2Vmrn
+xzAz7zPPPM/zzhu1t6Qy6fnZha/jpd8fTp+8IFM74UD3mCEDNWI0jRluwYdinKyK
+Th8YTUYvjEgngqwf1BUDBdkXorrrmAZjEMLID4oahbIiS4xyQwJPLnt+sQfCUugn
+XAZgsIRNLJfaNlPIARMrzDBVVHrKcYWgoMAhjqbMB1F806vGCmfOV/q0jbY+2tay
+TePb29pbSIuuDawUpKQ2KAl6Fsr0sEUdINJWrqcocIQSYAThdUt9qpRI7YOwtwC5
+MAhW/Lqxn1QxxcymxMZMi3GivMYzl2LPlIgzZCHwhIsUNbmDLampLaRchbHi2AEk
+LEQZNrGnCOeWS8BjTHjYZJRwZjGMQUiipLJMgqQglApqui5HjCPiWJRjyaWJdRg2
+eAqwrRwpFdbqI+gvBkaTzahllpNtOOi7kMhOArvhK9vjx/kB+W9upTCIAzco6FI+
+jktRU+I6Hikl2CGQuYTlqKbJSb+odMP+31GsoTclYiJEGwwYLvkh5PwEwQS3kB7J
+QzCYtJna2GO2iZEipuIWdyVhLnMEBzAdLKQrGfOop7gQIABx4nFJdHpMAJNU3PDJ
+tU6nR1NGfk/RiQdCMMqvpB+4NZXOpG6rySRfNnXH6jX//eMt06uu4voPBtMbx/sn
+Fi+8M7qwu7b1mf3D1Q93b4WLucaXJ77a++y5u8Zeh8XRePnw5S3tmYmdj62//ZMv
+Vr976uJHovDc+bnFpfq5lzqzn97/9An1RH7H9vrRyVLpCn17/eeV1+aG5n9eu3mq
++lalon5Fe56/r/n08V0dhW+27mmd/WmxeUPlxMzZ8I8zX6774Ui3/1f3I9O7jp57
+cujPNb3HNtz7/sdXzr63qfbbV2X76e9OdqxlNbmu7GTdgUt3Nrfc8/fm2o3jNZ1P
+Pf7g8L7yeP/dC993dYxXr14rZ5Ybuy7PHF43OXqtWj12fHbqYP/+xl5/1fnt+84s
+LR+afrHzs4eMkV9OzcDeS2/+uK0y/9s/
+=hVbd
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mdp
+
+==================================================================
