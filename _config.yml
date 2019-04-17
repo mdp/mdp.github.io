@@ -2,5 +2,5 @@ name: Mark Percival
 title: Mark Percival
 url: http://www.markpercival.us
 permalink: /:year/:month/:day/:title.html
-pygments: false
-markdown: redcarpet
+markdown: kramdown
+highlighter: rouge

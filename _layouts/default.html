@@ -62,6 +62,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="/assets/stylesheets/layout.css">
     <link rel="stylesheet" type="text/css" media="all" href="/assets/stylesheets/master.css">
     <link rel="stylesheet" type="text/css" media="all" href="/assets/stylesheets/pygments.css">
+    <link rel="stylesheet" type="text/css" media="all" href="/assets/stylesheets/main.css">
     <!--JQuery onload hack-->
     <script>(function(w,d,u){w.readyQ=[];w.bindReadyQ=[];function p(x,y){if(x=="ready"){w.bindReadyQ.push(y);}else{w.readyQ.push(x);}};var a={ready:p,bind:p};w.$=w.jQuery=function(f){if(f===d||f===u){return a}else{p(f)}}})(window,document)</script>
   </head>
@@ -72,7 +73,7 @@
   {{content}}
 
   <div id='footer' class='sixteen columns alpha light'>
-    &copy; Mark Percival 2013
+    &copy; Mark Percival {{ 'now' | date: "%Y" }}
   </div>
 </div>
 
@@ -84,7 +85,7 @@
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-31833246-1']);
-  _gaq.push(['_setDomainName', 'markpercival.us']);
+  _gaq.push(['_setDomainName', 'mdp.github.io']);
   _gaq.push(['_trackPageview']);
 
   (function() {
