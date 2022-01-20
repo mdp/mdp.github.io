@@ -7,16 +7,6 @@ category: featured
 Tracking the mail with a $29.99 phone
 =====================================
 
-[![Mark Percival](https://miro.medium.com/fit/c/56/56/0*7RjQVoSZok0VpscY.jpeg)](https://medium.com/@mdp?source=post_page-----ba92a8556367-----------------------------------)[
-
-Mark Percival
-
-](https://medium.com/@mdp?source=post_page-----ba92a8556367-----------------------------------)[
-
-Aug 17, 2014·6 min read
-
-](https://medium.com/@mdp/how-it-got-here-ba92a8556367?source=post_page-----ba92a8556367-----------------------------------)
-
 Let me frank, I buy a lot of stupid stuff from the Internet. And like most people, I obsess over where it is and when it will I’ll have it in my hands. But even with today’s ubiquitous package tracking, all I really get is a list of places my package visited as it made it’s way to my doorstep. For example, I may know that it stopped in Sacramento, but I’m still left wondering what it did between there and where it originated from. Did it spend a couple days in the back of a truck on the interstate, or maybe it took a shortcut on a plane?
 
 It’s unlikely that UPS and Fedex were going to give me the answers I wanted, so I set out to ship myself something that I could track with more accuracy. I had only two requirements — It must be cheap, and it needed to be small enough to fit into a standard (No. 10) envelope.

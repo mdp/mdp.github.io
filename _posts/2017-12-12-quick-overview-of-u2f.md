@@ -7,16 +7,6 @@ category: featured
 Quick and dirty developer guide to U2F
 ======================================
 
-[![Mark Percival](https://miro.medium.com/fit/c/56/56/0*7RjQVoSZok0VpscY.jpeg)](https://medium.com/@mdp?source=post_page-----c5767054b45b-----------------------------------)[
-
-Mark Percival
-
-](https://medium.com/@mdp?source=post_page-----c5767054b45b-----------------------------------)[
-
-Dec 12, 2017·5 min read
-
-](https://medium.com/@mdp/quick-and-dirty-developer-guide-to-u2f-c5767054b45b?source=post_page-----c5767054b45b-----------------------------------)
-
 I recently had the chance to implement U2F authentication in a small side project. During the process, I learned a lot about both the protocol and the current state of U2F documentation, or lack thereof. I hope that if you’re in the same place I was, this will get you up to speed more quickly than the other guides available.
 
 If you learn better with hands on examples (and you’ve got a U2F key), head over to my [U2F Demo](https://mdp.github.io/u2fdemo) and play around with it there.

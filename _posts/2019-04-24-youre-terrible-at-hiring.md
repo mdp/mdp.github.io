@@ -9,16 +9,6 @@ category: featured
 You’re terrible at hiring — A startup’s guide to interviewing engineers
 =======================================================================
 
-[![Mark Percival](https://miro.medium.com/fit/c/56/56/0*7RjQVoSZok0VpscY.jpeg)](https://medium.com/@mdp?source=post_page-----dfba87cc88b-----------------------------------)[
-
-Mark Percival
-
-](https://medium.com/@mdp?source=post_page-----dfba87cc88b-----------------------------------)[
-
-Apr 24, 2019·5 min read
-
-](https://medium.com/@mdp/youre-terrible-at-hiring-a-startup-s-guide-to-interviewing-engineers-dfba87cc88b?source=post_page-----dfba87cc88b-----------------------------------)
-
 _I frequently get asked by startups for help hiring engineers. Everyone wants a quick solution, but the problem with hiring humans is that they’re human. Studies also show that we’re terrible at picking the best candidate. Rather than throwing our hands in the air and hoping for the best, it’s even more important to have a process and to understand what it can and can’t do. Hiring doesn’t have to be hard, but that means accepting that we can’t predict the future._
 
 As engineers, we love problems. And hiring is a problem — a damn hard problem. One that people like Lazlo Bock of Google have spent their careers trying to solve. When asked about how Google performed at this task, he had the following to say:

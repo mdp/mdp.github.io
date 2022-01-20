@@ -7,16 +7,6 @@ category: featured
 Prototyping in the age of NoSQL
 ===============================
 
-[![Mark Percival](https://miro.medium.com/fit/c/56/56/0*7RjQVoSZok0VpscY.jpeg)](https://medium.com/@mdp?source=post_page-----3b876807fcdc-----------------------------------)[
-
-Mark Percival
-
-](https://medium.com/@mdp?source=post_page-----3b876807fcdc-----------------------------------)[
-
-Oct 29, 2017·2 min read
-
-](https://medium.com/@mdp/pain-today-pain-tomorrow-3b876807fcdc?source=post_page-----3b876807fcdc-----------------------------------)
-
 TLDR; I love Firebase, but their database offering leaves a lot to be desired when you’re in the early stages of prototyping a new application.
 
 I’ve recently been exploring Firebase and while I love the ability to quickly get a project up and running, it’s data storage layer leaves a lot to be desired at the prototype stage of a new project.
