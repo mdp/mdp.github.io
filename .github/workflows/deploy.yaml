@@ -27,4 +27,4 @@ jobs:
           git config user.email github-actions@github.com
           git add -f public
           git commit -m "Hugo build and deploy from Github workflows"
-          git push -u origin `git subtree split --prefix doc $DEPLOY_BRANCH`:refs/heads/gh-pages --force
+          git push -u origin `git subtree split --prefix public $DEPLOY_BRANCH`:refs/heads/gh-pages --force
