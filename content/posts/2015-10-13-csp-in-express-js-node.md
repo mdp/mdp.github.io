@@ -3,6 +3,7 @@ categories:
 - featured
 date: "2015-10-13T00:00:00Z"
 title: CSP in Express.js
+slug: csp-in-express-js-node
 ---
 
 CSP in Express.js / Node

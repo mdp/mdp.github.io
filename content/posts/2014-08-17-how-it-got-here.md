@@ -3,6 +3,7 @@ categories:
 - featured
 date: "2014-08-17T00:00:00Z"
 title: Tracking the mail with a $29.99 phone
+slug: how-it-got-here
 ---
 
 Tracking the mail with a $29.99 phone

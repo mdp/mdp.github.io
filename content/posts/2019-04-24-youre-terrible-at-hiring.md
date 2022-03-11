@@ -3,6 +3,7 @@ categories:
 - featured
 date: "2019-04-24T00:00:00Z"
 title: You’re terrible at hiring — A startup’s guide to interviewing engineers
+slug: youre-terrible-at-hiring
 ---
 
 ![](https://miro.medium.com/max/1400/1*H5WioiSz2kUUbLwfmKLhhw.png)

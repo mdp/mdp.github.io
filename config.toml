@@ -5,4 +5,4 @@ theme = 'mdp'
 uglyurls = true
 redirect = true
 [permalinks]
-    posts = '/:year/:month/:day/:slug.html'
+    posts = '/:year/:month/:day/:slug'

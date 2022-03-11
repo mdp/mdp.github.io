@@ -3,7 +3,7 @@ categories:
 - featured
 date: "2017-10-29T00:00:00Z"
 title: Prototyping in the age of NoSQL
-url: /2017/10/29/prototyping-in-the-age-of-nosql.html
+slug: prototyping-in-the-age-of-nosql
 ---
 
 Prototyping in the age of NoSQL

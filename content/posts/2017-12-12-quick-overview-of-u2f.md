@@ -3,6 +3,7 @@ categories:
 - featured
 date: "2017-12-12T00:00:00Z"
 title: Quick and dirty developer guide to U2F
+slug: quick-overview-of-u2f
 ---
 
 Quick and dirty developer guide to U2F

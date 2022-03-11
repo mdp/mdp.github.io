@@ -6,6 +6,7 @@ tags:
 - github
 - evernote
 title: Tumblr's shoehorned JS watches for dirty tricks
+slug: tumblrs-js-is-watching-what-you-type
 ---
 
 I stumbled across this the other day on Tumblr.
