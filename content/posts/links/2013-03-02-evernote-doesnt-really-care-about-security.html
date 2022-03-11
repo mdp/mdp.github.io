@@ -1,0 +1,41 @@
+---
+categories:
+- featured
+date: "2013-03-02T00:00:00Z"
+redirect: http://markpercival.tumblr.com/post/44391805072/evernote-doesnt-really-care-about-security
+tags:
+- evernote
+- security
+- dropbox
+title: Evernote doesn't really care about security
+---
+<p><p class="p1">So <a href="http://evernote.com/corp/news/password_reset.php" target="_blank">Evernote got hacked</a>. Suprised? I&#8217;m not.</p>
+
+<p class="p1">First off, let me quickly note that I actually use Evernote on a daily basis and like the product very much. It&#8217;s great for taking notes and stashing the digital cruft I inevitably accumulate; email receipts, travel confirmations, snippets of articles, all go into my Evernote account. I even <a href="https://github.com/mdp/GistEvernoteImport" target="_blank"><span class="s1">hacked up a script</span></a> to send my Github Gists into Evernote so I can search them more easily.</p>
+
+<p class="p1">That being said, let me show you how little Evernote cares about security. None of this stuff is groundbreaking or new, but taken together, I think it shows a clear disregard for their customers privacy and data security.</p>
+
+<p class="p1"><strong>1. Evernote&#8217;s CEO Phil Libin said two factor was a few months away back in </strong><span class="s1"><strong><a href="http://api.quora.com/Evernote/When-will-Evernote-implement-2-factor-authentication" target="_blank">October</a>, then reiterated it was coming in <a href="http://elephantchannel.net/2012/12/041212-evernote-workshop-verbatim-notes-leweb/" target="_blank">December</a>. </strong></span><strong>Evernote 5 gets a big release, still no two factor.</strong></p>
+
+<p class="p1">We&#8217;re still waiting, and it&#8217;s been a <a href="https://www.google.com/search?q=site%3Adiscussion.evernote.com+two+factor" target="_blank"><span class="s1">frequently requested feature</span></a>. Maybe this public breach will fix it, but should a company like Evernote be so reactive? This is a company that tells you &#8221;<a href="http://blog.evernote.com/blog/2011/03/15/evernote-makeover-series-how-to-do-your-taxes-in-evernote/" target="_blank"><span class="s1">How to Do Your Taxes With Evernote</span></a>.&#8221; They clearly want you to feel comfortable storing sensitive documents with them, but they don&#8217;t want to spend any effort on security.</p>
+
+<p class="p1"><strong>2. They actually used SSL as a selling point in the past</strong></p>
+
+<p class="p1">They fixed this some time ago, but I think it shows their mindset quite clearly. <span>Let me remind you again, this is a company that recommended storing your tax documents on their service&#8230; And would then sync them unencrypted unless you paid. That&#8217;s downright irresponsible.</span></p>
+<p class="p1">Their current CEO, Phil Libin, was in charge when this was used as a selling tactic in the past.</p>
+
+<p class="p1"><strong>3. Evernote still </strong><a href="https://support.evernote.com/link/portal/16051/16058/Article/1652/What-type-of-encryption-does-Evernote-use" target="_blank"><span class="s1"><strong>uses 64bit RC2</strong></span></a><strong> for encrypting notes</strong></p>
+
+<blockquote>
+<p class="p1">&#8220;This is the longest symmetric key length permitted by US Export restrictions without going through a complex process to gain export approval&#8221;</p>
+</blockquote>
+
+<p class="p1">Ugh, totally, so many forms! <span>Look, I&#8217;m no encryption export expert, but Dropbox seems to have figured out the &#8220;complex process&#8221;. And last time I checked, Apple was shipping laptops globally with the option to encrypt your home directory, and it&#8217;s not with a block cipher that was </span><a href="http://en.wikipedia.org/wiki/Block_cipher_security_summary" target="_blank">successfully attacked in 1997</a><span>. Figure it out guys.</span></p>
+
+<p class="p1"><strike><strong>4. SSL Sign in isn&#8217;t enforced</strong></strike></p>
+<p class="p2"><strike><span class="s1"><a href="http://www.evernote.com/Login.action?targetUrl=%2FHome.action" target="_blank">Give it a shot</a></span><span>. Send someone a link to the non-SSL sign in and it won&#8217;t flip them over to SSL. It will also accept your credentials via non-SSL POST. So fire up </span><a href="https://github.com/moxie0/sslstrip" target="_blank">SSLStrip</a><span> and head down to your local coffee shop.</span></strike></p>
+<p class="p2"><strike><span><br/></span></strike><em>Update: As <a href="http://news.ycombinator.com/item?id=5311778" target="_blank">Paul Butler pointed out on HN</a>, even if they did redirect you to HTTPS, there&#8217;s no real way to stop someone in the middle from keeping you on HTTP. I&#8217;ll strike this one, as it&#8217;s pretty nit picky. But I&#8217;ll add one in it&#8217;s place :)</em></p>
+<p class="p2"><strong><span>4.  They don&#8217;t use HSTS to enforce SSL</span></strong></p>
+<p class="p2">Dropbox does it. Twitter does it. Evernote should too.</p>
+
+<p class="p2"><em>Correction March 5th, 2013: Someone pointed out I got the date wrong. LeWeb was in December of 2012, not April.</em></p></p>

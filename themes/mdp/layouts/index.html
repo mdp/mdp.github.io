@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	{{ partial "head.html" . }}
+	<body>
+
+
+<div class="container">
+    <div id="header" class='sixteen columns alpha'>
+    
+    <div class="fourteen columns alpha"> <div class="avatar"><img src="/img/avatar_75.png"/></div> <h1><a href="/">MARK PERCIVAL</a></h1></div>
+    </div>
+
+    <div id='about' class='one-third column alpha'>
+    <h2 class='heading'>about</h2>
+    <p> Formerly mobile engineering at Twitter, CTO Snip.it (acquired by Yahoo!), and Investing Partner at Builders.vc. Now helping early stage companies build the products they want to build.</p>
+    <p>
+    In my free time I like to travel, eat fearlessly, avoid traffic, work on open source projects, and violate terms of service agreements.</p>
+    </div>
+
+    <div id='project' class='one-third column'>
+    <h2 class='heading'>projects</h2>
+    <ul>
+        <li><a href="http://github.com/mdp/rotp">ROTP</a> - A Ruby gem for One Time Password, RFC 4226 compatible </li>
+        <li><a href="https://mdp.github.io/u2fdemo/">U2F Demo and Debugger</a></a> - Learn more about using U2F</li>
+        <li><a href="http://github.com/mdp/AtlantaWaterMeter">AtlantaWaterMeter</a> - Read your water meter with an SDR</li>
+        <li><a href="https://github.com/mdp/qrterminal">qrterminal</a> - QR Code Library for terminals</li>
+        <li><a href="http://github.com/mdp">Other Github Projects</a> - Check here for more up to date work</li>
+    </ul>
+    </div>
+
+    <div id='contact' class='one-third column omega'>
+    <h2 class='heading'>Contact</h2>
+    <ul>
+        <li>Emailing &raquo; <a href="mailto:m@mdp.im">m@mdp.im</a></li>
+        <li>Coding &raquo; <a href="https://github.com/mdp">Github/mdp</a></li>
+        <li>Twittering &raquo; <a href='http://twitter.com/mdp'>@mdp</a></li>
+        <li>Networking &raquo; <a href='http://linkedin.com/in/markpercival'>LinkedIn Profile</a></li>
+    </ul>
+    </div>
+
+    <div class='two-thirds column alpha'>
+    <div class='two-thirds column alpha'>
+        <h2 class='heading'>Long Winded</h2>
+        <ul id='posts' class="">
+            {{- range .Site.RegularPages -}}
+                <li class="post">
+                    <span class="right date mono">{{ dateFormat "02 Jan 2006" .Date }}</span>
+                    {{ if .Params.redirect }}
+                    <a href="{{ .Params.redirect }}">{{.Title}}</a>
+                    {{ else }}
+                    <a href="{{ .RelPermalink }}">{{.Title}}</a>
+                    {{ end }}
+                </li>
+            {{- end -}}
+        </ul>
+    </div>
+    </div>
+    {{ partial "footer.html" . }}
+</div>
+
+</body>
+</html> 

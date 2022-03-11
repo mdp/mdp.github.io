@@ -1,0 +1,8 @@
+baseURL = 'http://mdp.github.io/'
+languageCode = 'en-us'
+title = 'Mark Percival'
+theme = 'mdp'
+uglyurls = true
+redirect = true
+[permalinks]
+    posts = '/:year/:month/:day/:slug.html'
