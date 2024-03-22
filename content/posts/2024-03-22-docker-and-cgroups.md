@@ -6,6 +6,8 @@ title: Docker and Cgroups (Or how to avoid runaway CPU on limited systems)
 status: draft
 ---
 
+![Image description](/img/posts/2024.03.22-cgroup.jpg)
+
 I prefer to develop on remote systems, especially now with VSCode's ability to work on remote machines. And most of the time I'm working within a container, like Docker.
 
 The only issue I occasionally run into is the tendency for a larger project to peg the CPU when a bunch of operations are going on. This results in a serious performance penalty for the system I'm on, in some cases even locking up the ability to SSH into the machine until the system terminates the run away process.

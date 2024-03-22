@@ -78,6 +78,10 @@ h3, h4 {
   margin-top: 2em;
 }
 
+article img {
+  width: 100%;
+}
+
 .heading {
   border-top: 4px solid #555;
   letter-spacing: 0.1em;
