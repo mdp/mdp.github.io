@@ -1,0 +1,124 @@
+body {
+  font-family: "PT Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #222;
+  background-color: #f9f9f9;
+}
+
+a, a:visited {
+  text-decoration:none;
+  border-bottom: 1px #a9a9a9 dotted;
+  color: #222;
+}
+
+h1 a, h1 a:visited, h2 a, h2 a:visited, h3 a, h3 a:visited, h4 a, h4 a:visited  {
+  color: #2ba6cb;
+  font-family: "Oswald", sans-serif;
+  border: none;
+}
+
+a:hover {
+  border-bottom: 1px #2ba6cb dotted;
+  color: #2ba6cb;
+}
+
+ul {
+  padding: 0 0 0 0px;
+}
+
+ul li {
+  list-style-type: none;
+  margin: 0.5em 0;
+}
+
+ol li {
+  margin: 0.5em 0;
+}
+
+h2 {
+  font-size: 1.75em;
+  text-transform:uppercase;
+  margin-bottom: 0.5em;
+}
+
+h3, h4 {
+  margin-bottom: 0.4em;
+}
+
+#header {
+  margin-top: 0.5em;
+}
+
+#header h1 {
+  margin: 0;
+  padding: 0;
+  font-size:4em;
+  display:inline;
+}
+
+.avatar {
+  display:inline;
+}
+
+.avatar img {
+  width: 75px;
+  height: 75px;
+  margin-top: -50px;
+  margin-right: 1em;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  background: url(/assets/img/avatar_75.png) no-repeat;
+}
+
+#publish-date {
+  text-align:right;
+  padding-right:1em;
+  margin-top: 2em;
+}
+
+article img {
+  width: 100%;
+}
+
+.heading {
+  border-top: 4px solid #555;
+  letter-spacing: 0.1em;
+  margin-top:1em;
+}
+
+#header p {
+  margin:0;
+  padding:0;
+}
+
+.light {
+  color:#BBB;
+}
+
+.small {
+  font-size:10px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.close {
+  line-height:0px;
+}
+
+.mono {
+  font-family:"Courier", monospace;
+}
+
+ul.close {
+  line-height:10px;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.7em;
+  color: #222;
+}
