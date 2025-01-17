@@ -1,0 +1,60 @@
+<!doctype html><html> <head>
+<meta charset=utf-8>
+<title>Mark Percival</title>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<script>var host="mdp.github.io";host==window.location.host&&window.location.protocol!="https:"&&(window.location=window.location.toString().replace(/^http:/,"https:"))</script>
+<link rel="shortcut icon" href=/img/icon.png>
+<link rel=apple-touch-icon href=/img/icon_128.png>
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel=stylesheet type=text/css>
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel=stylesheet type=text/css>
+<meta name=author content="Mark Percival">
+<meta name=description content="Mark Percival - Professional typist, man about town, person of interest">
+<link rel=stylesheet href=/css/h5bp.css>
+<link rel=stylesheet type=text/css media=all href=/css/skeleton.css>
+<link rel=stylesheet type=text/css media=all href=/css/layout.css>
+<link rel=stylesheet type=text/css media=all href=/css/master.css>
+<link rel=stylesheet type=text/css media=all href=/css/pygments.css>
+<link rel=stylesheet type=text/css media=all href=/css/main.css>
+</head><body><div class=container>
+<main>
+<div id=header class="four alpha">
+<h1><a href=/>MARK PERCIVAL</a></h1>
+</div>
+<article>
+<div class=title>
+<h2 class=title>Prototyping in the age of NoSQL</h1>
+<div class="meta data">Oct 29, 2017</div>
+</div>
+<div id=post class="twelve columns alpha">
+<h1 id=prototyping-in-the-age-of-nosql>Prototyping in the age of NoSQL</h1>
+<p>TLDR; I love Firebase, but their database offering leaves a lot to be desired when you’re in the early stages of prototyping a new application.</p>
+<p>I’ve recently been exploring Firebase and while I love the ability to quickly get a project up and running, it’s data storage layer leaves a lot to be desired at the prototype stage of a new project.</p>
+<p>I’m not going to argue that non-relational data stores are ‘wrong’ or should be ‘considered harmful’. In fact it’s quite the opposite, I’ve readily put them to use in the past, especially when performance is an issue.</p>
+<p>My concern is how they are often floated as the ideal platform to prototype on. Reasons commonly cited include:</p>
+<ul>
+<li>They provide a simpler interface</li>
+<li>Flexible data models (document stores in particular)</li>
+<li>Scaling is built in</li>
+</ul>
+<p>Here’s where I disagree. It’s hard to know how you’ll query and segment your data when you’re in the prototyping phase. The flexible data model seems like a blessing, but it’s got a huge caveat — <strong>The way you organize your data will severely impact how you are able to query from it</strong>.</p>
+<p>On the flip-side, in an RDBMS world we have the upfront cost of deciding a schema early on, but the query language gives you a lot of flexibility when it comes to using that data. Will it be slower? Maybe. But that’s a concern for a later date.</p>
+<h2 id=denormalization-should-be-the-last-step>Denormalization should be the last step</h2>
+<p>Firebase rightfully suggests that you <a href=https://firebase.google.com/docs/database/web/structure-data#fanout>denormalize your data</a> in order to query it from different angles (eg. Posts by Author, a list of Authors, a list of Posts).</p>
+<p>So you make the changes and later on realize you want the thumbnail field on Author available in the “list of Posts” view. Now you’ve got a couple issue to tackle.</p>
+<ul>
+<li>You’ll need a migration process to query all the Authors, then get all their Posts, and update the ‘thumbnail’ field on each Post.</li>
+<li>You’ll need to chase down every method where the Author document is updated and make sure it updates all the Post documents. This could be abstracted away into one call, but you’ll need to write this abstraction.</li>
+</ul>
+<p>You know what’s frustrating about the above example. You had to do <strong>all that work for a because of a view template change</strong>. The core functionality of the app didn’t change. The fundamental data behind the app didn’t change. The only thing that changed was our designer wanted to add a thumbnail to the view.</p>
+<h2 id=tradeoffs>Tradeoffs</h2>
+<p>There’s no silver bullet here. Firebase gives you incredible flexibility for of having a single product where you can host and deploy your applications. The downside is that you’ll be on the hook for structuring your data in a way that works for your queries — queries that may change rapidly when you’re in the first stages of development.</p>
+<p>As your product matures, it’s likely you’ll be able to make these decisions, and Firebase becomes a real contender.</p>
+</div>
+<div class=post-tags>
+</div>
+</article><div id=footer class="sixteen columns alpha light">
+© Mark Percival 2025
+</div></main>
+</div>
+</body>
+</html>

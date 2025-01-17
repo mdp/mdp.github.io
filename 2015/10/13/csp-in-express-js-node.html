@@ -1,0 +1,45 @@
+<!doctype html><html> <head>
+<meta charset=utf-8>
+<title>Mark Percival</title>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<script>var host="mdp.github.io";host==window.location.host&&window.location.protocol!="https:"&&(window.location=window.location.toString().replace(/^http:/,"https:"))</script>
+<link rel="shortcut icon" href=/img/icon.png>
+<link rel=apple-touch-icon href=/img/icon_128.png>
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel=stylesheet type=text/css>
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel=stylesheet type=text/css>
+<meta name=author content="Mark Percival">
+<meta name=description content="Mark Percival - Professional typist, man about town, person of interest">
+<link rel=stylesheet href=/css/h5bp.css>
+<link rel=stylesheet type=text/css media=all href=/css/skeleton.css>
+<link rel=stylesheet type=text/css media=all href=/css/layout.css>
+<link rel=stylesheet type=text/css media=all href=/css/master.css>
+<link rel=stylesheet type=text/css media=all href=/css/pygments.css>
+<link rel=stylesheet type=text/css media=all href=/css/main.css>
+</head><body><div class=container>
+<main>
+<div id=header class="four alpha">
+<h1><a href=/>MARK PERCIVAL</a></h1>
+</div>
+<article>
+<div class=title>
+<h2 class=title>CSP in Express.js</h1>
+<div class="meta data">Oct 13, 2015</div>
+</div>
+<div id=post class="twelve columns alpha">
+<h1 id=csp-in-expressjs--node>CSP in Express.js / Node</h1>
+<p>This is pretty straightforward, but here’s how I implement CSP in an Express middleware layer.</p>
+<p>A few notes:</p>
+<ol>
+<li>CSP statements like `self` and `unsafe-eval`need to include the single quotes in the header, so you’ll need to escape them.</li>
+<li>`connect-src` are your websocket endpoints</li>
+<li>You can whitelist an entire schema (eg. ‘https’), which is also a great way of prevent mixed content warnings, even if you don’t want to explicitly secure all the resources (For example in ‘styles’)</li>
+</ol>
+</div>
+<div class=post-tags>
+</div>
+</article><div id=footer class="sixteen columns alpha light">
+© Mark Percival 2025
+</div></main>
+</div>
+</body>
+</html>

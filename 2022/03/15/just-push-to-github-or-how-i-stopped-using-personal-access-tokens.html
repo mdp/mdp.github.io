@@ -1,0 +1,78 @@
+<!doctype html><html> <head>
+<meta charset=utf-8>
+<title>Mark Percival</title>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<script>var host="mdp.github.io";host==window.location.host&&window.location.protocol!="https:"&&(window.location=window.location.toString().replace(/^http:/,"https:"))</script>
+<link rel="shortcut icon" href=/img/icon.png>
+<link rel=apple-touch-icon href=/img/icon_128.png>
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel=stylesheet type=text/css>
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel=stylesheet type=text/css>
+<meta name=author content="Mark Percival">
+<meta name=description content="Mark Percival - Professional typist, man about town, person of interest">
+<link rel=stylesheet href=/css/h5bp.css>
+<link rel=stylesheet type=text/css media=all href=/css/skeleton.css>
+<link rel=stylesheet type=text/css media=all href=/css/layout.css>
+<link rel=stylesheet type=text/css media=all href=/css/master.css>
+<link rel=stylesheet type=text/css media=all href=/css/pygments.css>
+<link rel=stylesheet type=text/css media=all href=/css/main.css>
+</head><body><div class=container>
+<main>
+<div id=header class="four alpha">
+<h1><a href=/>MARK PERCIVAL</a></h1>
+</div>
+<article>
+<div class=title>
+<h2 class=title>Just push to github (or how I stopped using personal access tokens)</h1>
+<div class="meta data">Mar 15, 2022</div>
+</div>
+<div id=post class="twelve columns alpha">
+<p>Github pages has long felt like a bit of an orphan product at Github, but it&rsquo;s still a useful one, and one that I find myself using for a variety of reasons (documentation, static demo pages).</p>
+<p>Before Github actions became a thing, it was quite a chore to get something up on Github pages from a CI system like Travis. Usually you either needed to create a deploy key or use a personal access token. I have serious issues with Personal Access Tokens because although you can limit their capabilities, you can&rsquo;t limit their access to specific projects. This creates a situation where a personal access token used to deploy a Github Page can also be used to commit changes to any other projects I have access to as a user. This feels like a lot of risk for the benefits of being able to simply push a commit to a Github Page.</p>
+<p>Unfortunately most of the documentation and marketplace plugins for pushing commits to Github Pages make use of the Personal Access Token. But this is no longer a requirement, and it&rsquo;s actually much easier to just use <code>actions/checkout</code>, which handles the authentication to the current repository (<a href=https://github.com/actions/checkout#Push-a-commit-using-the-built-in-token)>https://github.com/actions/checkout#Push-a-commit-using-the-built-in-token)</a>.</p>
+<p>And in the interest of keeping this short and informative, here&rsquo;s the basic deploy action script I use to deploy this site with Hugo, but it should be adjustable with just about process where you need to push a compiled subdirectory to Github Pages.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>name</span>: <span style=color:#ae81ff>deploy-to-github-pages</span>
+<span style=color:#f92672>on</span>:
+  <span style=color:#f92672>push</span>:
+    <span style=color:#f92672>branches</span>:
+      - <span style=color:#ae81ff>main</span>
+<span style=color:#f92672>jobs</span>:
+  <span style=color:#f92672>deploy_to_gh_pages</span>:
+    <span style=color:#f92672>runs-on</span>: <span style=color:#ae81ff>ubuntu-latest</span>
+    <span style=color:#f92672>env</span>:
+      <span style=color:#f92672>DEPLOY_BRANCH</span>: <span style=color:#ae81ff>main</span>
+    <span style=color:#f92672>steps</span>:
+      - <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>actions/checkout@v3</span>
+
+      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Setup Hugo</span>
+        <span style=color:#f92672>uses</span>: <span style=color:#ae81ff>peaceiris/actions-hugo@v2</span>
+        <span style=color:#f92672>with</span>:
+          <span style=color:#f92672>hugo-version</span>: <span style=color:#e6db74>&#39;0.91.2&#39;</span>
+          <span style=color:#75715e># extended: true</span>
+
+      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Build</span>
+        <span style=color:#f92672>run</span>: <span style=color:#ae81ff>hugo --minify</span>
+
+      - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>Deploy public dir</span>
+        <span style=color:#f92672>run</span>: |<span style=color:#e6db74>
+</span><span style=color:#e6db74>          touch public/.nojekyll
+</span><span style=color:#e6db74>          git config user.name github-actions
+</span><span style=color:#e6db74>          git config user.email github-actions@github.com
+</span><span style=color:#e6db74>          git add -f public
+</span><span style=color:#e6db74>          git commit -m &#34;Hugo build and deploy from Github workflows&#34;
+</span><span style=color:#e6db74>          git push -u origin `git subtree split --prefix public $DEPLOY_BRANCH`:refs/heads/gh-pages --force</span>          
+</code></pre></div><h3 id=git-magic>Git magic</h3>
+<p>There&rsquo;s some complex stuff on the last few lines, but let&rsquo;s break it down.</p>
+<ul>
+<li>&lsquo;public&rsquo; is ignored in .gitignore, so we need to add it forcefully with the &lsquo;-f&rsquo; and commit the changes</li>
+<li>We&rsquo;re going split the subtree at the &lsquo;public&rsquo; directory (see: <a href=https://lostechies.com/johnteague/2014/04/04/using-git-subtrees-to-split-a-repository/>Using git subtrees to split a repository</a>) and get the hash.</li>
+<li>Then we force push the subtree hash to gh-pages on origin</li>
+</ul>
+</div>
+<div class=post-tags>
+</div>
+</article><div id=footer class="sixteen columns alpha light">
+© Mark Percival 2025
+</div></main>
+</div>
+</body>
+</html>

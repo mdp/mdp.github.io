@@ -1,0 +1,87 @@
+<!doctype html><html> <head>
+<meta charset=utf-8>
+<title>Mark Percival</title>
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<script>var host="mdp.github.io";host==window.location.host&&window.location.protocol!="https:"&&(window.location=window.location.toString().replace(/^http:/,"https:"))</script>
+<link rel="shortcut icon" href=/img/icon.png>
+<link rel=apple-touch-icon href=/img/icon_128.png>
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel=stylesheet type=text/css>
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic" rel=stylesheet type=text/css>
+<meta name=author content="Mark Percival">
+<meta name=description content="Mark Percival - Professional typist, man about town, person of interest">
+<link rel=stylesheet href=/css/h5bp.css>
+<link rel=stylesheet type=text/css media=all href=/css/skeleton.css>
+<link rel=stylesheet type=text/css media=all href=/css/layout.css>
+<link rel=stylesheet type=text/css media=all href=/css/master.css>
+<link rel=stylesheet type=text/css media=all href=/css/pygments.css>
+<link rel=stylesheet type=text/css media=all href=/css/main.css>
+</head><body><div class=container>
+<main>
+<div id=header class="four alpha">
+<h1><a href=/>MARK PERCIVAL</a></h1>
+</div>
+<article>
+<div class=title>
+<h2 class=title>Docker and Cgroups (Or how to avoid runaway CPU on limited systems)</h1>
+<div class="meta data">Mar 22, 2024</div>
+</div>
+<div id=post class="twelve columns alpha">
+<p><img src=/img/posts/2024.03.22-cgroup.jpg alt="Image description"></p>
+<p>I prefer to develop on remote systems, especially now with VSCode&rsquo;s ability to work on remote machines. And most of the time I&rsquo;m working within a container, like Docker.</p>
+<p>The only issue I occasionally run into is the tendency for a larger project to peg the CPU when a bunch of operations are going on. This results in a serious performance penalty for the system I&rsquo;m on, in some cases even locking up the ability to SSH into the machine until the system terminates the run away process.</p>
+<p>You can limit Docker&rsquo;s use of CPU with some argument flags, but when you don&rsquo;t control that process (devcontainers), it&rsquo;s hard to inject those in the right places.</p>
+<p>What I really want is the ability to limit the entire Docker process and not have to worry about a container spinning out of control. And linux gives us an easy way to do that.</p>
+<p>In this post, I just want to go through the basic steps to add Cgroups to Docker, but it should work for any systemd controlled service.</p>
+<h1 id=docker-cgroups>Docker Cgroups</h1>
+<p>TLDR of this process:</p>
+<ol>
+<li>Create a <code>.slice</code> file to set the Cgroup limits.</li>
+<li>Update the Docker <code>.service</code> system file to use that cgroup</li>
+<li>Reload the systemd daemon to reload the changed configs.</li>
+<li>Restart the Docker service</li>
+<li>Confirm the new limitations</li>
+</ol>
+<p>If you&rsquo;re on Ubuntu with the normal Dcker install, everything we need to alter and add to lives in here: <code>/lib/systemd/system</code></p>
+<h2 id=1-create-our-slice-of-limits>1. Create our <code>.slice</code> of limits</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml>[<span style=color:#a6e22e>Unit</span>]
+<span style=color:#a6e22e>Description</span>=<span style=color:#a6e22e>Slice</span> <span style=color:#a6e22e>that</span> <span style=color:#a6e22e>limits</span> <span style=color:#a6e22e>docker</span> <span style=color:#a6e22e>resources</span>
+<span style=color:#a6e22e>Before</span>=<span style=color:#a6e22e>slices</span>.<span style=color:#a6e22e>target</span>
+
+[<span style=color:#a6e22e>Slice</span>]
+<span style=color:#a6e22e>CPUQuota</span>=<span style=color:#ae81ff>150</span><span style=color:#960050;background-color:#1e0010>%</span>
+<span style=color:#a6e22e>MemoryHigh</span>=<span style=color:#ae81ff>2</span><span style=color:#a6e22e>G</span>
+<span style=color:#a6e22e>MemoryMax</span>=<span style=color:#ae81ff>4</span><span style=color:#a6e22e>G</span>
+<span style=color:#a6e22e>MemoryMaxSwap</span>=<span style=color:#ae81ff>10</span><span style=color:#a6e22e>G</span>
+</code></pre></div><p>Change the values to suit your use case. Note, if you have 4 CPU&rsquo;s, the highest limit would be 400%. Take this into account.</p>
+<h2 id=2-update-the-dockerservice>2. Update the <code>docker.service</code></h2>
+<p>Starts out something like:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml>[<span style=color:#a6e22e>Service</span>]
+<span style=color:#a6e22e>Type</span>=<span style=color:#a6e22e>notify</span>
+<span style=color:#75715e># the default is not to use systemd for cgroups because the delegate issues still</span>
+<span style=color:#75715e># exists and systemd currently does not support the cgroup feature set required</span>
+<span style=color:#75715e># for containers run by docker</span>
+<span style=color:#a6e22e>ExecStart</span>=<span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>usr</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>bin</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>dockerd</span> <span style=color:#a6e22e>-H</span> <span style=color:#a6e22e>fd</span><span style=color:#960050;background-color:#1e0010>://</span> <span style=color:#a6e22e>--containerd</span>=<span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>run</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>containerd</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>containerd</span>.<span style=color:#a6e22e>sock</span>
+<span style=color:#a6e22e>ExecReload</span>=<span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>bin</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>kill</span> <span style=color:#a6e22e>-s</span> <span style=color:#a6e22e>HUP</span> <span style=color:#960050;background-color:#1e0010>$</span><span style=color:#a6e22e>MAINPID</span>
+<span style=color:#a6e22e>TimeoutStartSec</span>=<span style=color:#ae81ff>0</span>
+<span style=color:#a6e22e>RestartSec</span>=<span style=color:#ae81ff>2</span>
+<span style=color:#a6e22e>Restart</span>=<span style=color:#a6e22e>always</span>
+</code></pre></div><p>The line:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=color:#a6e22e>ExecStart</span>=<span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>usr</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>bin</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>dockerd</span> <span style=color:#a6e22e>-H</span> <span style=color:#a6e22e>fd</span><span style=color:#960050;background-color:#1e0010>://</span> <span style=color:#a6e22e>--containerd</span>=<span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>run</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>containerd</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>containerd</span>.<span style=color:#a6e22e>sock</span>
+</code></pre></div><p>Simply needs to change to:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-toml data-lang=toml><span style=color:#a6e22e>ExecStart</span>=<span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>usr</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>bin</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>dockerd</span> <span style=color:#a6e22e>-H</span> <span style=color:#a6e22e>fd</span><span style=color:#960050;background-color:#1e0010>://</span> <span style=color:#a6e22e>--containerd</span>=<span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>run</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>containerd</span><span style=color:#960050;background-color:#1e0010>/</span><span style=color:#a6e22e>containerd</span>.<span style=color:#a6e22e>sock</span> <span style=color:#a6e22e>--cgroup-parent</span>=<span style=color:#a6e22e>docker</span>.<span style=color:#a6e22e>slice</span>
+</code></pre></div><h2 id=3-reload-the-systemd-daemon-to-reload-the-changed-configs>3. Reload the systemd daemon to reload the changed configs.</h2>
+<p><code>sudo systemctl daemon-reload</code></p>
+<h2 id=4-restart-the-docker-service>4. Restart the Docker service</h2>
+<p><code>sudo systemctl restart docker</code></p>
+<h2 id=5-confirm-the-new-limitations>5. Confirm the new limitations</h2>
+<p>Change the below values to something that matches your system profile</p>
+<p><code>$ docker run --rm -it polinux/stress stress --cpu 2 --io 1 --vm 1 --vm-bytes 128M --timeout 10s --verbose</code></p>
+</div>
+<div class=post-tags>
+</div>
+</article><div id=footer class="sixteen columns alpha light">
+© Mark Percival 2025
+</div></main>
+</div>
+</body>
+</html>
