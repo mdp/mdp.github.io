@@ -5,6 +5,8 @@ categories:
 title: "Experience vs Innovation: Breaking Down the AI Coding Divide"
 ---
 
+![Mainframe and PC](/img/posts/2025.01.20-pc-mainframe.png)
+
 AI hype is very much in effect in the business world, but ironically any time a new technology comes along it's often developers that harbor the most cynicism.
 
 And this isn't new, it's actually the learned response of most engineers, especially the experienced ones. The old guard questioned Linux and open source, spent countless hours harping on how the cloud was an overpriced joke, and thought JavaScript on the server would never take off. This cynicism can now be found in AI as a developer tool.

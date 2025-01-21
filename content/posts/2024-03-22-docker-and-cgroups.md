@@ -3,7 +3,6 @@ date: 2024-03-22
 categories:
 - featured
 title: Docker and Cgroups (Or how to avoid runaway CPU on limited systems)
-status: draft
 ---
 
 ![Image description](/img/posts/2024.03.22-cgroup.jpg)
