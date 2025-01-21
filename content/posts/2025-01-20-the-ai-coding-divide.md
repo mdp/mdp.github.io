@@ -15,7 +15,7 @@ Hacker News, whose crowd is usually quick to embrace new technology, isn't immun
 
 AI is no different, but the divide seems particularly sharp. Less experienced (and largely younger) engineers are rapidly embracing AI coding tools, while older more established developers are, at best, dabbling. But that tide is starting to turn.
 
-Recently, [an article written by developer using Large Language Models](https://news.ycombinator.com/item?id=42617645) (LLMs) made it to the front page of Hacker News. This wasn't just another AI hot take, but a deeper dive from someone actively using AI coding tools daily and speculating on how it will transform our industry's coding practices. Normally, this would have been mercilessly roasted on Hacker News for a variety of reasons. Instead, the top comment read:
+Recently, [an article written by a developer using Large Language Models](https://news.ycombinator.com/item?id=42617645) (LLMs) made it to the front page of Hacker News. This wasn't just another AI hot take, but a deeper dive from someone actively using AI coding tools daily and speculating on how it will transform our industry's coding practices. Normally, this would have been mercilessly roasted on Hacker News for a variety of reasons. Instead, the top comment read:
 
 "One interesting bit of context is that the author of this post is a legit world-class software engineer already (though probably too modest to admit it). Former staff engineer at Google and co-founder / CTO of Tailscale. He doesn't need LLMs. That he says LLMs make him more productive at all as a hands-on developer, especially around first drafts on a new idea, means a lot to me personally." - [dewitt](https://news.ycombinator.com/item?id=42619022)
 
