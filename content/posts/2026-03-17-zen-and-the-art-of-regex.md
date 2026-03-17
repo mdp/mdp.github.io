@@ -5,8 +5,6 @@ categories:
 title: "The kids are alright (and they'll probably still learn regex)"
 ---
 
-# Mark Percival on X: "The kids are alright (and they'll probably still learn regex)" / X
-
 TL;DR: You should still learn regex (and other things), but I really just wanted an excuse to vibe code
 
 [Regex Blaster](https://mdp.github.io/regex-blaster)
